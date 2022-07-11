@@ -24,10 +24,14 @@ namespace selenium2
             var options = new ChromeOptions();
             // options.AddArguments("--headless");
             options.AddArguments("--start-maximized");
+            options.AddArgument("no-sandbox");
 
             // string DriverPath = @"D:\SOURCE\Test\Selenium\chromedriver_win32";
             // var driver = new ChromeDriver(DriverPath, options, TimeSpan.FromSeconds(300));
-            var driver = new ChromeDriver(options);
+            // var driver = new ChromeDriver(options);
+            ChromeDriver driver = new ChromeDriver(ChromeDriverService.CreateDefaultService(), options, TimeSpan.FromMinutes(5));
+            driver.Manage().Timeouts().PageLoad.Add(TimeSpan.FromSeconds(300));
+            driver.Manage().Timeouts().ImplicitWait.Add(TimeSpan.FromSeconds(300));
             //driver.Manage().Window.Maximize();
 
             /* OUTPUT FILE SETUP */
