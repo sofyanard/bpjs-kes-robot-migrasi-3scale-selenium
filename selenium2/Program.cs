@@ -17,6 +17,10 @@ namespace selenium2
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        private static string appPlanAntrian = "AntreanRS_Dev";
+        private static string appPlanVClaim = "VClaim-Rest";
+        private static string appPlanPCare = "PCareRest_DevPlan";
+
         static void Main(string[] args)
         {
             /* DRIVER SETUP */
@@ -148,26 +152,41 @@ namespace selenium2
                                 var lnkApplication1 = driver.FindElement(By.XPath("//td[2]/a"));
                                 var lnkApplication2 = driver.FindElement(By.XPath("//tr[2]/td[2]/a"));
 
-                                if (lnkApplication1.Text.ToLower().Contains("antr"))
+                                string applicationPlan1 = driver.FindElement(By.XPath("//td[4]/a")).Text;
+                                string applicationPlan2 = driver.FindElement(By.XPath("//tr[2]/td[4]/a")).Text;
+
+                                if (applicationPlan1.Equals(appPlanAntrian))
                                 {
-                                    outApiType = "ANTRIAN|";
-                                    Console.WriteLine("API TYPE: ANTRIAN");
-                                    log.Info("API TYPE: ANTRIAN");
+                                    outApiType = appPlanAntrian + "|";
+                                    Console.WriteLine("API TYPE: " + appPlanAntrian);
+                                    log.Info("API TYPE: " + appPlanAntrian);
                                     lnkApplication1.Click();
                                 }
                                 else
                                 {
-                                    if (lnkApplication2.Text.ToLower().Contains("antr"))
+                                    if (applicationPlan2.Equals(appPlanAntrian))
                                     {
-                                        outApiType = "ANTRIAN|";
-                                        Console.WriteLine("API TYPE: ANTRIAN");
-                                        log.Info("API TYPE: ANTRIAN");
+                                        outApiType = appPlanAntrian + "|";
+                                        Console.WriteLine("API TYPE: " + appPlanAntrian);
+                                        log.Info("API TYPE: " + appPlanAntrian);
+                                    }
+                                    else if (applicationPlan2.Equals(appPlanVClaim))
+                                    {
+                                        outApiType = appPlanVClaim + "|";
+                                        Console.WriteLine("API TYPE: " + appPlanVClaim);
+                                        log.Info("API TYPE: " + appPlanVClaim);
+                                    }
+                                    else if (applicationPlan2.Equals(appPlanPCare))
+                                    {
+                                        outApiType = appPlanPCare + "|";
+                                        Console.WriteLine("API TYPE: " + appPlanPCare);
+                                        log.Info("API TYPE: " + appPlanPCare);
                                     }
                                     else
                                     {
-                                        outApiType = "VCLAIM|";
-                                        Console.WriteLine("API TYPE: VCLAIM");
-                                        log.Info("API TYPE: VCLAIM");
+                                        outApiType = "OTHERS|";
+                                        Console.WriteLine("API TYPE: OTHERS");
+                                        log.Info("API TYPE: OTHERS");
                                     }
                                     lnkApplication2.Click();
                                 }
@@ -176,17 +195,31 @@ namespace selenium2
                             {
                                 var lnkApplication0 = driver.FindElement(By.XPath("//td[2]/a"));
 
-                                if (lnkApplication0.Text.ToLower().Contains("antr"))
+                                string applicationPlan0 = driver.FindElement(By.XPath("//td[4]/a")).Text;
+
+                                if (applicationPlan0.Equals(appPlanAntrian))
                                 {
-                                    outApiType = "ANTRIAN|";
-                                    Console.WriteLine("API TYPE: ANTRIAN");
-                                    log.Info("API TYPE: ANTRIAN");
+                                    outApiType = appPlanAntrian + "|";
+                                    Console.WriteLine("API TYPE: " + appPlanAntrian);
+                                    log.Info("API TYPE: " + appPlanAntrian);
+                                }
+                                else if (applicationPlan0.Equals(appPlanVClaim))
+                                {
+                                    outApiType = appPlanVClaim + "|";
+                                    Console.WriteLine("API TYPE: " + appPlanVClaim);
+                                    log.Info("API TYPE: " + appPlanVClaim);
+                                }
+                                else if (applicationPlan0.Equals(appPlanPCare))
+                                {
+                                    outApiType = appPlanPCare + "|";
+                                    Console.WriteLine("API TYPE: " + appPlanPCare);
+                                    log.Info("API TYPE: " + appPlanPCare);
                                 }
                                 else
                                 {
-                                    outApiType = "VCLAIM|";
-                                    Console.WriteLine("API TYPE: VCLAIM");
-                                    log.Info("API TYPE: VCLAIM");
+                                    outApiType = "OTHERS|";
+                                    Console.WriteLine("API TYPE: OTHERS");
+                                    log.Info("API TYPE: OTHERS");
                                 }
                                 lnkApplication0.Click();
                             }
