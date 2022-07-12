@@ -111,7 +111,8 @@ namespace selenium2
 
                 try
                 {
-                    var lnkResult = driver.FindElement(By.LinkText(accountName));
+                    // var lnkResult = driver.FindElement(By.LinkText(accountName));
+                    var lnkResult = driver.FindElement(By.XPath("//td[2]/a"));
 
                     if (lnkResult != null)
                     {
@@ -184,9 +185,9 @@ namespace selenium2
                                     }
                                     else
                                     {
-                                        outApiType = "OTHERS|";
-                                        Console.WriteLine("API TYPE: OTHERS");
-                                        log.Info("API TYPE: OTHERS");
+                                        outApiType = applicationPlan2 + "|";
+                                        Console.WriteLine("API TYPE: " + applicationPlan2);
+                                        log.Info("API TYPE: " + applicationPlan2);
                                     }
                                     lnkApplication2.Click();
                                 }
@@ -217,9 +218,9 @@ namespace selenium2
                                 }
                                 else
                                 {
-                                    outApiType = "OTHERS|";
-                                    Console.WriteLine("API TYPE: OTHERS");
-                                    log.Info("API TYPE: OTHERS");
+                                    outApiType = applicationPlan0 + "|";
+                                    Console.WriteLine("API TYPE: " + applicationPlan0);
+                                    log.Info("API TYPE: " + applicationPlan0);
                                 }
                                 lnkApplication0.Click();
                             }
